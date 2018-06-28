@@ -1,11 +1,14 @@
 <?php
 
 	include 'config.php';
+	include 'errors.php';
 	require_once('autoloader.php');
 	// $autoloader = new Autoloader($autoload);
 	$autoloader = new Autoloader();
 
 	$errors = [];
+ 
+	echo($test);
 
 	if(isset($_SERVER['PATH_INFO'])) {
 		
