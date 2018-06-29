@@ -12,8 +12,6 @@
 
 		}
 
-		// CALL THE FOLLOWING FUNCTION IN INDEX AND REMOVE DUPLICATION IN INDEX
-
 		public function create_conn() {
 			include 'config.php';
 
@@ -29,7 +27,7 @@
 			    return $this->conn->connect_error;
 			} 
 			else {
-				return 'bar';
+				return 'DB Connected';
 			}
 		}
 	}
