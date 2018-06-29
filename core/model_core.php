@@ -29,7 +29,7 @@
 			else {
 
 				// Connection OK
-				return 'bar';
+				return 'DB Connected';
 			}
 		}
 	}

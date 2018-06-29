@@ -13,20 +13,28 @@ class Error_Core {
 
 	}
 
-	function custom_error($errno, $errstr){
+	function custom_error($errno, $errstr, $errfile, $errline){
 
-		array_push($this->errors, '<b>Error:</b> ['.$errno.'] '.$errstr);
-		error_log('Error: ['.$errno.'] '.$errstr."\n", 3, '/var/www/html/jiMVC/logs/error.log');
+		array_push($this->errors, '<b>Error:</b> ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline);
+		error_log('Error: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline."\n", 3, '/var/www/html/jiMVC/logs/error.log');
 	}
 
 	function fatal_handler() {
 
-		$errno   = E_CORE_ERROR;
-		$errstr = "Bugger!";
-		array_push($this->errors, '<b>Error:</b> ['.$errno.'] '.$errstr);
-		error_log('Error: ['.$errno.'] '.$errstr."\n", 3, '/var/www/html/jiMVC/logs/error.log');
+		include 'config.php';
 
-	}
+		$error = error_get_last();
+
+        $errno   = $error["type"];
+        $errfile = $error["file"];
+        $errline = $error["line"];
+        $errstr  = $error["message"];
+
+        error_log('FATAL ERROR: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline."\n", 3, '/var/www/html/jiMVC/logs/error.log');
+
+        echo $debug ? $errstr : 'Oops!';
+
+	}	
 
 	public function get_errors() {
 		return $this->errors;
@@ -37,7 +45,6 @@ class Error_Core {
 
 	}
 	
-
 }
 
 

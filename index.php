@@ -5,10 +5,10 @@
 	// $autoloader = new Autoloader($autoload);
 	$autoloader = new Autoloader();
 	$error_handler = new Error_Core();
-
-	
  
-	// echo($test);
+	echo($test);
+
+	// Check path and call appropriate controller/model
 
 /* -----------------------------------------------------
  * Check path and serve page via appropriate controller
@@ -21,43 +21,22 @@
 		$path_explode = explode('/', $_SERVER['PATH_INFO']);
 		$model = ucfirst($path_explode[1]).'_Model';
 		$controller = ucfirst($path_explode[1]).'_Controller';
-		if((!class_exists($controller)) || (!class_exists($model))) {
-
-			$error_handler->fatal_handler();
-		}
-		else{
-
-			$model = new $model();
-			$model->create_conn();
-			echo $model->create_conn();
-			$controller = new $controller($model);
-			count($path_explode) < 3 ? $method = 'index' : $method = $path_explode[2];
-			$controller->$method();			
-		}
+		count($path_explode) < 3 ? $method = 'index' : $method = $path_explode[2];
 
 	}
 	else {
+
 		$model = ucfirst($root).'_Model';
 		$controller = ucfirst($root).'_Controller';
+		$method = 'index';
 
-		if((!class_exists($controller)) || (!class_exists($model))) {
-
-			$error_handler->fatal_handler();
-
-			// $error_handler->add_error('oh dear');
-			// $error_handler->add_error('oh dear now');
-		}
-		else{
-
-		$model = new $model();
-		$model->create_conn();
-		echo $model->create_conn();		
-
-		$controller = new $controller($model);
-		$controller->index();
-
-		}
 	}
+
+	$model = new $model();
+	$model->create_conn();
+	echo $model->create_conn();		
+	$controller = new $controller($model);
+	$controller->$method();	
 	
 	// Just for testing
 	echo count($error_handler->get_errors());
