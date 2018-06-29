@@ -2,7 +2,7 @@
 
 class Example_root_Model extends Model_Core {
 
-	public $string;
+	private $string;
 
 	public function __construct(){
 		$this->string = "This string is defined in the 'Example_root' model 

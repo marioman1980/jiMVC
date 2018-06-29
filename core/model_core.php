@@ -12,8 +12,6 @@
 
 		}
 
-		// CALL THE FOLLOWING FUNCTION IN INDEX AND REMOVE DUPLICATION IN INDEX
-
 		public function create_conn() {
 			include 'config.php';
 
@@ -24,11 +22,13 @@
 
 			$this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
 
-			# TEST DB CONNECTION
+			// TEST DB CONNECTION
 			if ($this->conn->connect_error) {
 			    return $this->conn->connect_error;
 			} 
 			else {
+
+				// Connection OK
 				return 'bar';
 			}
 		}
