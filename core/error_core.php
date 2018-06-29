@@ -13,13 +13,13 @@ class Error_Core {
 
 	}
 
-	function custom_error($errno, $errstr, $errfile, $errline){
+	public function custom_error($errno, $errstr, $errfile, $errline){
 
 		array_push($this->errors, '<b>Error:</b> ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s"));
 		error_log('Error: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s")."\n", 3, '/var/www/html/jiMVC/logs/error.log');
 	}
 
-	function fatal_handler() {
+	public function fatal_handler() {
 
 		include 'config.php';
 
@@ -50,7 +50,3 @@ class Error_Core {
 	}
 	
 }
-
-
-
-?>

@@ -39,3 +39,4 @@
 	if($debug && count($error_handler->get_errors()) >= 1) {
 		include 'view/errors/errors.php';
 	}
+	

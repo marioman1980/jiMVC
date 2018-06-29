@@ -1,21 +1,12 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link href="<?= $base; ?>assets/css/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+</head>
 
-<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-
-<style>
-
-	#container {
-		padding: 10px;
-		font-family: 'PT Sans', sans-serif;
-	}
-
-	#container, #inner-container {
-		margin: 0 auto;
-	}
-
-</style>
-
-<div id="container">
-	<div id="inner-container">
+<body>
+	<div id="container">
 
 		<h1>EXAMPLE</h1>
 		<p>This is an example of a view.</p>
@@ -28,4 +19,5 @@
 		<a href="test">test</a>
 		<a href="example">example</a>		
 	</div>
-</div>
+</body>
+</html>
