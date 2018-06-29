@@ -1,10 +1,12 @@
 <?php
 
 	include 'config.php';
-	include 'errors.php';
+	// include 'errors.php';
 	require_once('autoloader.php');
 	// $autoloader = new Autoloader($autoload);
 	$autoloader = new Autoloader();
+
+	$error_handler = new Error_Core();
 
 	$errors = [];
  
