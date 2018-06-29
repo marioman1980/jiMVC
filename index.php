@@ -1,16 +1,15 @@
 <?php
 
 	include 'config.php';
-	// include 'errors.php';
 	require_once('autoloader.php');
 	// $autoloader = new Autoloader($autoload);
 	$autoloader = new Autoloader();
 
 	$error_handler = new Error_Core();
 
-	$errors = [];
+	
  
-	echo($test);
+	// echo($test);
 
 	if(isset($_SERVER['PATH_INFO'])) {
 		
@@ -19,8 +18,8 @@
 		$controller = ucfirst($path_explode[1]).'_Controller';
 		if((!class_exists($controller)) || (!class_exists($model))) {
 
-			array_push($errors, 'oh dear');
-			array_push($errors, 'oh dear now');
+			$error_handler->add_error('oh dear');
+			$error_handler->add_error('oh dear now');
 		}
 		else{
 
@@ -39,8 +38,8 @@
 
 		if((!class_exists($controller)) || (!class_exists($model))) {
 
-			array_push($errors, 'oh dear');
-			array_push($errors, 'oh dear now');
+			$error_handler->add_error('oh dear');
+			$error_handler->add_error('oh dear now');
 		}
 		else{
 
@@ -54,7 +53,8 @@
 		}
 	}
 	
+	echo count($error_handler->get_errors());
 
-	if($debug && count($errors) >= 1) {
+	if($debug && count($error_handler->get_errors()) >= 1) {
 		include 'view/errors/errors.php';
 	}
