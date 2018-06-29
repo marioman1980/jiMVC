@@ -10,12 +10,6 @@
 
 	// Check path and call appropriate controller/model
 
-/* -----------------------------------------------------
- * Check path and serve page via appropriate controller
- *
- * Feel like there's a better way of doing this due to
- * repetition in if statement
- * -----------------------------------------------------*/
 	if(isset($_SERVER['PATH_INFO'])) {
 		
 		$path_explode = explode('/', $_SERVER['PATH_INFO']);
