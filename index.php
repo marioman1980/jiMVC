@@ -23,8 +23,7 @@
 		$controller = ucfirst($path_explode[1]).'_Controller';
 		if((!class_exists($controller)) || (!class_exists($model))) {
 
-			$error_handler->add_error('oh dear');
-			$error_handler->add_error('oh dear now');
+			$error_handler->fatal_handler();
 		}
 		else{
 
@@ -43,8 +42,10 @@
 
 		if((!class_exists($controller)) || (!class_exists($model))) {
 
-			$error_handler->add_error('oh dear');
-			$error_handler->add_error('oh dear now');
+			$error_handler->fatal_handler();
+
+			// $error_handler->add_error('oh dear');
+			// $error_handler->add_error('oh dear now');
 		}
 		else{
 
