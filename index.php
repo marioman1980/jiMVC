@@ -14,8 +14,12 @@
 	// Check path and call appropriate controller/model
 
 	if(isset($_SERVER['PATH_INFO'])) {
-		
-		$path_explode = explode('/', $_SERVER['PATH_INFO']);
+		$path = $_SERVER['PATH_INFO'];
+		if(substr($path, -1) == '/') {
+			$path = substr_replace($path, '', -1);
+		}
+
+		$path_explode = explode('/', $path);
 		$model = ucfirst($path_explode[1]).'_Model';
 		$controller = ucfirst($path_explode[1]).'_Controller';
 		count($path_explode) < 3 ? $method = 'index' : $method = $path_explode[2];

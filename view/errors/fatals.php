@@ -5,7 +5,7 @@
 
 	#error-container, #error-inner-container {
 		margin: 0 auto;
-		font-family: 'PT Sans', sans-serif;		
+		font-family: 'Fjalla One', sans-serif;		
 	}
 
 	#error-header {

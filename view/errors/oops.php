@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link href="<?= BASE; ?>assets/css/style.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 	<style>
 	h1, p {
 		text-align: center;
