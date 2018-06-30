@@ -5,6 +5,8 @@
 	// $autoloader = new Autoloader($autoload);
 	$autoloader = new Autoloader();
 	$error_handler = new Error_Core();
+
+	define('BASE', $base);
  
 	echo($test);
 

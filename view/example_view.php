@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-	<link href="<?= $base; ?>assets/css/style.css" rel="stylesheet">
+	<link href="<?= BASE; ?>assets/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 </head>
 
