@@ -32,7 +32,8 @@
 		$method = 'index';
 
 	}
-
+	$assets = new Asset_Helper();
+	echo $assets->load_assets();
 	$model = new $model();
 	$model->create_conn();
 	echo $model->create_conn();		

@@ -25,15 +25,16 @@
 
 			// Only classes defined in core, or in directories 
 			// specified in config autoloader option will be included
+			// Load any helpers as well
 
-			if(in_array($dir, $core) || in_array($dir, $autoload)) {
+			if(in_array($dir, $core) || in_array($dir, $autoload) || in_array(end($class_explode), $helpers)) {
 
 				$filename = strtolower($class) . '.php';
 
-				$file = $dir.'/'.$filename;
-
-				if (!file_exists($file)) return false;
-				include $file;				
+				$file = $dir.'/'.$filename;			
 			}
+
+			if (!file_exists($file)) return false;
+			include $file;				
 		}
 	}	
