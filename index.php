@@ -7,6 +7,7 @@
 	$error_handler = new Error_Core();
 
 	define('BASE', $base);
+	define('SYSTEM', $system);
  
 	echo($test);
 

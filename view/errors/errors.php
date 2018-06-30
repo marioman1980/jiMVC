@@ -8,7 +8,7 @@
 			<?php
 				
 				foreach($error_handler->get_errors() as $error) {
-					echo '<p>'.$error,'</p>';
+					echo '<p><b>Error:</b> '.$error,'</p>';
 				}
 				echo ':(';
 

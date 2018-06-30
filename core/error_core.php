@@ -15,8 +15,8 @@ class Error_Core {
 
 	public function custom_error($errno, $errstr, $errfile, $errline){
 
-		array_push($this->errors, '<b>Error:</b> ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s"));
-		error_log('Error: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s")."\n", 3, '/var/www/html/jiMVC/logs/error.log');
+		array_push($this->errors, '['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s"));
+		error_log('Error: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s")."\n", 3, SYSTEM.'logs/error.log');
 	}
 
 	public function fatal_handler() {
@@ -32,12 +32,8 @@ class Error_Core {
 
         if($error) {
         	error_log('FATAL ERROR: ['.$errno.'] "'.$errstr.'" in '.$errfile.':'.$errline.' '.date("Y-m-d H:i:s")."\n", 3, '/var/www/html/jiMVC/logs/error.log');
+        	$debug ? include SYSTEM.'view/errors/fatals.php' : include SYSTEM.'view/errors/oops.php';
         }
-
-        
-
-        echo $debug ? $errstr : 'Oops!';
-
 	}	
 
 	public function get_errors() {
