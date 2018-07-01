@@ -1,5 +1,7 @@
 <?php
 
+	// NEED TO TIDY THIS FILE UP
+
 	include 'config.php';
 	require_once('autoloader.php');
 	// $autoloader = new Autoloader($autoload);
@@ -38,8 +40,7 @@
 	if(class_exists('Asset_Helper')) {
 		$assets = new Asset_Helper();
 		$assets = $assets->load_assets();
-	}
-	
+	}	
 	
 	$model = new $model();
 	$model->create_conn();

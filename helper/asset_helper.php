@@ -6,20 +6,31 @@
 
 		}
 
+		// CONSOLIDATE REPETITION
+
 		public function load_assets() {
 
-			$css = '';
+			$tags = '';
 			$dir = '';
 			$file = '';
 			if ($dir = opendir('assets/css')) {
 			    while (false !== ($file = readdir($dir))) {
 			        if (is_file('assets/css/' . $file)) {
-			            $css .= '<link rel="stylesheet" href="assets/css/' . $file .'" type="text/css" />' . "\n";
+			            $tags .= '<link rel="stylesheet" href="assets/css/' . $file .'" type="text/css" />' . "\n";
 			        }
 			    }
-			    closedir($dir);
-			    return $css;
+			    // closedir($dir);
 			}
+			if ($dir = opendir('assets/js')) {
+    			while (false !== ($file = readdir($dir))) {
+        			if (is_file('assets/js/' . $file)) {
+            			$tags .= '<script src="assets/js/' . $file . '" type="text/javascript"></script>' . "\n";
+        			}
+    			}
+    			// closedir($dir);			    
+			}
+			closedir($dir);
+			return $tags;
 		}
 
 	}
