@@ -1,0 +1,18 @@
+
+# If we need a constructor in a class, we need to explicity call the constructor from core like so:
+
+	public function __construct($model, $assets) {
+
+		parent::__construct($model, $assets);
+
+		// Whatever we need our constructor to do
+	}
+
+
+# Classes need first letter capitalised and first letter of type capitalised. No other letters should be capitalised. Snake case must be used. File name should be class name in lower case(though not essential), eg:
+
+	FILENAME				CLASS NAME
+
+	my_controller.php		My_Controller
+
+	my_lovely_model.php		My_lovely_Model
