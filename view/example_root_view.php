@@ -2,6 +2,7 @@
 <html>
 <head>
 	<!-- <link href="<?= BASE; ?>assets/css/style.css" rel="stylesheet"> -->
+	<?= $assets; ?>
 	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 </head>
 

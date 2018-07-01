@@ -6,6 +6,8 @@
 	$autoloader = new Autoloader();
 	$error_handler = new Error_Core();
 
+	$assets = '';
+
 	define('BASE', $base);
 	define('SYSTEM', $system);
  
@@ -32,12 +34,17 @@
 		$method = 'index';
 
 	}
-	$assets = new Asset_Helper();
-	echo $assets->load_assets();
+
+	if(class_exists('Asset_Helper')) {
+		$assets = new Asset_Helper();
+		$assets = $assets->load_assets();
+	}
+	
+	
 	$model = new $model();
 	$model->create_conn();
 	echo $model->create_conn();		
-	$controller = new $controller($model);
+	$controller = new $controller($model, $assets);
 	$controller->$method();	
 	
 	// Just for testing

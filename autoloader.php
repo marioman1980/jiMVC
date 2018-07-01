@@ -23,18 +23,23 @@
 			$class_explode = explode('_', $class);
 			$dir = end($class_explode);
 
+			array_pop($class_explode);
+			$class_start = implode('_', $class_explode);
+
 			// Only classes defined in core, or in directories 
 			// specified in config autoloader option will be included
 			// Load any helpers as well
 
-			if(in_array($dir, $core) || in_array($dir, $autoload) || in_array(end($class_explode), $helpers)) {
+			if(in_array($dir, $core) || in_array($dir, $autoload) || in_array($class_start, $helpers)) {				
 
 				$filename = strtolower($class) . '.php';
 
-				$file = $dir.'/'.$filename;			
+				$file = $dir.'/'.$filename;	
+
+				if (!file_exists($file)) return false;
+				include $file;						
 			}
 
-			if (!file_exists($file)) return false;
-			include $file;				
+				
 		}
 	}	
