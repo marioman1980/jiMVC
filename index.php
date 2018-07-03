@@ -42,6 +42,9 @@
 		$assets = $assets->load_assets();
 	}	
 	
+	if(!class_exists($model) || !class_exists($controller)) {
+		http_response_code(404);
+	}
 	$model = new $model();
 	$model->create_conn();
 	echo $model->create_conn();		
@@ -53,6 +56,7 @@
 
 	// Display any errors
 	if($debug && count($error_handler->get_errors()) >= 1) {
+		
 		include 'view/errors/errors.php';
 	}
 	
