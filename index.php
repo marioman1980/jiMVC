@@ -42,14 +42,21 @@
 		$assets = $assets->load_assets();
 	}	
 	
-	if(!class_exists($model) || !class_exists($controller)) {
+	// If controller doesn't exist, throw 404
+	// Need to do something similar for incorrect/non-existent methods
+	if(!class_exists($controller)) {
 		http_response_code(404);
+		error_log('FATAL ERROR: Controller class \''.$controller.'\' doesn\'t exist', 3, SYSTEM.'logs/error.log');	
+		include SYSTEM.'view/errors/404.php';
 	}
-	$model = new $model();
-	$model->create_conn();
-	echo $model->create_conn();		
-	$controller = new $controller($model, $assets);
-	$controller->$method();	
+	else {
+		$model = new $model();
+		$model->create_conn();
+		echo $model->create_conn();		
+		$controller = new $controller($model, $assets);
+		$controller->$method();			
+	}
+
 	
 	// Just for testing
 	echo count($error_handler->get_errors());

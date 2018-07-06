@@ -18,11 +18,10 @@
 <body>
 	<div id="container">
 
-		<h1>Oops!</h1>
-		<p>We're really sorry, but something seems to have gone wrong and we can't find what you're looking for.</p>
-		<p>It's probably time to contact your system administrator.</p>
+		<h1>Not Found</h1>
+		<p>That page doesn't exist.</p>
 		<img src="<?= BASE; ?>assets/img/sofa.jpg" />
-		
+		<p>You can stop looking now.</p>		
 	</div>
 </body>
 </html>
