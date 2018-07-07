@@ -44,9 +44,11 @@
 	
 	// If controller doesn't exist, throw 404
 	// Need to do something similar for incorrect/non-existent methods
+
+	// Put all this error stuff in custom handler and try some ternarys
 	if(!class_exists($controller)) {
 		http_response_code(404);
-		error_log('FATAL ERROR: Controller class \''.$controller.'\' doesn\'t exist', 3, SYSTEM.'logs/error.log');	
+		error_log('FATAL ERROR: Controller class \''.$controller.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
 		include SYSTEM.'view/errors/404.php';
 	}
 	else {
@@ -54,7 +56,16 @@
 		$model->create_conn();
 		echo $model->create_conn();		
 		$controller = new $controller($model, $assets);
-		$controller->$method();			
+
+		if(!method_exists($controller, $method)) {
+			http_response_code(404);
+			error_log('FATAL ERROR: Class method \''.get_class($controller).' -> '.$method.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
+			include SYSTEM.'view/errors/404.php';
+		}
+		else {
+			$controller->$method();	
+		}
+				
 	}
 
 	
