@@ -20,8 +20,8 @@ class Error_Core {
 	}
 
 	// Try to handle errors to prevent interruption
-	public function custom_handler() {
-
+	public function custom_handler($string) {
+		error_log('FATAL ERROR: Controller class \''.$string.'\' doesn\'t exist '.date("Y-m-d H:i:s")."\n", 3, SYSTEM.'logs/error.log');
 	}
 
 	// Hopefully any fatal errors will be caught here

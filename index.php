@@ -19,8 +19,11 @@
 
 	if(isset($_SERVER['PATH_INFO'])) {
 		$path = $_SERVER['PATH_INFO'];
+		// Dealing with trailing slashes. There must be a more elegant way
 		if(substr($path, -1) == '/') {
-			$path = substr_replace($path, '', -1);
+			$path = rtrim($path, '/');
+			$base = rtrim(BASE, '/');
+			header('Location: '.$base.$path); 
 		}
 
 		$path_explode = explode('/', $path);
@@ -48,7 +51,8 @@
 	// Put all this error stuff in custom handler and try some ternarys
 	if(!class_exists($controller)) {
 		http_response_code(404);
-		error_log('FATAL ERROR: Controller class \''.$controller.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
+		// error_log('FATAL ERROR: Controller class \''.$controller.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
+		$error_handler->custom_handler($controller);
 		include SYSTEM.'view/errors/404.php';
 	}
 	else {
@@ -59,7 +63,8 @@
 
 		if(!method_exists($controller, $method)) {
 			http_response_code(404);
-			error_log('FATAL ERROR: Class method \''.get_class($controller).' -> '.$method.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
+			// error_log('FATAL ERROR: Class method \''.get_class($controller).' -> '.$method.'\' doesn\'t exist'."\n", 3, SYSTEM.'logs/error.log');	
+			$error_handler->custom_handler(get_class($controller).' -> '.$method);
 			include SYSTEM.'view/errors/404.php';
 		}
 		else {
@@ -68,7 +73,8 @@
 				
 	}
 
-	
+	// NOTE TO SELF - SEEMS WE HAVE AN ISSUE WITH TRAILING SLASHES AFTER CONTROLLER IN URL
+
 	// Just for testing
 	echo count($error_handler->get_errors());
 
