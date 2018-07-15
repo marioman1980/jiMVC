@@ -58,7 +58,7 @@
 	else {
 		$model = new $model();
 		$model->create_conn();
-		echo $model->create_conn();		
+		// echo $model->create_conn();		
 		$controller = new $controller($model, $assets);
 
 		if(!method_exists($controller, $method)) {

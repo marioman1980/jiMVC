@@ -29,8 +29,29 @@
 			else {
 
 				// Connection OK
-				return 'DB Connected';
+				return $this->conn;
 			}
 		}
+
+		public function test_query() {
+
+			$query = "SELECT * FROM tests";
+			$result = $this->create_conn()->query($query);
+			$results = [];
+
+			if ($result->num_rows > 0) {
+
+			    while($row = $result->fetch_assoc()) {
+
+			    	array_push($results, $row['id']);
+			    	
+	    		}
+	    		return $results;
+			} 
+			else {
+			    return null;
+			}
+			$this->create_conn->close();
+		}		
 	}
 	
