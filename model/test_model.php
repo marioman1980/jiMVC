@@ -18,14 +18,11 @@
 
 		}
 
-		public function get_ids() {
-			$ids = $this->test_query();
+		public function get_test() {
 
-			return $ids;
+			$query = $this->get_all('tests');
 
-		    // while($row = $ids->fetch_assoc()) {
-      //   		return "id: " . $row["id"]. "<br>";
-    		// }
+			return $query;
 		}
 
 

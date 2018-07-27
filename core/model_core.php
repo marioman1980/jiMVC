@@ -13,6 +13,7 @@
 		}
 
 		public function create_conn() {
+
 			include 'config.php';
 
 			$this->host 	= $db_settings['host'];
@@ -33,17 +34,18 @@
 			}
 		}
 
-		public function test_query() {
+		public function get_all($table) {
 
-			$query = "SELECT * FROM tests";
+			$query = "SELECT * FROM ".$table;
 			$result = $this->create_conn()->query($query);
+
 			$results = [];
 
 			if ($result->num_rows > 0) {
 
 			    while($row = $result->fetch_assoc()) {
 
-			    	array_push($results, $row['id']);
+			    	array_push($results, $row);
 			    	
 	    		}
 	    		return $results;
